@@ -347,6 +347,7 @@ module gear (
 	// Variables controlling the circular holes in the gear.
 	circle_orbit_diameter=hub_diameter/2+rim_radius;
 	circle_orbit_curcumference=pi*circle_orbit_diameter;
+        calculated_twist=(tan(twist)*gear_thickness*360)/(2*PI*(pitch_diameter/2));
 
 	// Limit the circle size to 90% of the gear face.
 	circle_diameter=
@@ -360,7 +361,7 @@ module gear (
 		{
 			difference ()
 			{
-				linear_exturde_flat_option(flat=flat, height=rim_thickness, convexity=10, twist=twist)
+				linear_exturde_flat_option(flat=flat, height=rim_thickness, convexity=10, twist=calculated_twist)
 				gear_shape (
 					number_of_teeth,
 					pitch_radius = pitch_radius,
